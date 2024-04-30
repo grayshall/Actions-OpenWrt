@@ -58,7 +58,7 @@ jobs:
         echo "--------------------------硬盘信息--------------------------"
         echo "硬盘数量: $(ls /dev/sd* | grep -v [1-9] | wc -l)" && df -hT
 
-      - name: Before freeing up disk space
+    - name: Before freeing up disk space
       run: |
         echo "Before freeing up disk space"
         echo "=============================================================================="
