@@ -26,7 +26,7 @@ on:
 
 env:
   REPO_URL: https://github.com/DHDAXCW/lede-rockchip
-  REPO_BRANCH: master
+  REPO_BRANCH: stable
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: r2s.config.txt
   DIY_P1_SH: d1.sh.txt
