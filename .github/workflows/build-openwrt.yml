@@ -21,15 +21,15 @@ on:
 #  schedule:
 #    - cron: 0 8 * * 5
 
-#  watch:
-#    types: started
+  watch:
+    types: started
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_URL: https://github.com/DHDAXCW/lede-rockchip
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: config.64
-  DIY_P1_SH: diy-part1.sh
+  CONFIG_FILE: r2s.config.txt
+  DIY_P1_SH: d1.sh.txt
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
