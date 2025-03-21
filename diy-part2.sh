@@ -20,7 +20,7 @@
 #sed -i 's/OpenWrt/Y-Router/g' package/base-files/files/bin/config_generate
 
 #change linux_target_kernel
-sed -i 's/KERNEL_PATCHVER:= ./KERNEL_PATCHVER:=6.1/g' lede/target/linux/rockchip/Makefile
-sed -i 's/KERNEL_TESTING_PATCHVER:= ./KERNEL_TESTING_PATCHVER:=6.6/g' lede/target/linux/rockchip/Makefile
-sed -i 's/LINUX_VERSION-6.1 = ./LINUX_VERSION-6.1 = .89/g' lede/include/kernel/kernel-6.1
-sed -i 's/LINUX_KERNEL_HASH-6.1. ./LINUX_KERNEL_HASH-6.1.89 = 12bab8e092618d1d4eeaf4201e6e70054c94896198956bd84ff0e908b0264719/g' lede/include/kernel/kernel-6.1
+sed -i 's/KERNEL_PATCHVER:= ./KERNEL_PATCHVER:=6.1/g' openwrt/target/linux/rockchip/Makefile
+sed -i 's/KERNEL_TESTING_PATCHVER:= ./KERNEL_TESTING_PATCHVER:=6.6/g' openwrt/target/linux/rockchip/Makefile
+sed -i 's/LINUX_VERSION-6.1 = ./LINUX_VERSION-6.1 = .89/g' openwrt/include/kernel/kernel-6.1
+sed -i 's/LINUX_KERNEL_HASH-6.1. ./LINUX_KERNEL_HASH-6.1.89 = 12bab8e092618d1d4eeaf4201e6e70054c94896198956bd84ff0e908b0264719/g' openwrt/include/kernel/kernel-6.1
