@@ -29,7 +29,7 @@ env:
   REPO_BRANCH: stable
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: r2s0323.config
-  DIY_P1_SH: d1.sh
+  DIY_P1_SH: d2.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
@@ -74,10 +74,8 @@ jobs:
 
     - name: Load custom feeds
       run: |
-        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
-        chmod +x $DIY_P1_SH
-        cd openwrt
-        $GITHUB_WORKSPACE/$DIY_P1_SH
+        [ -e $DIY_P1_SH ] && mv $DIY_P1_SH openwrt/feeds.conf.default
+        
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
