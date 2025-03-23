@@ -1,0 +1,9 @@
+src-git packages https://github.com/DHDAXCW/packages
+src-git luci https://github.com/DHDAXCW/luci
+src-git routing https://github.com/coolsnowwolf/routing
+src-git telephony https://github.com/coolsnowwolf/telephony.git
+src-git istore https://github.com/linkease/istore;main
+src-git darkmatter https://github.com/apollo-ng/luci-theme-darkmatter
+src-git helloworld https://github.com/fw876/helloworld.git
+src-git kenzo https://github.com/kenzok8/openwrt-packages
+src-git small https://github.com/kenzok8/small
