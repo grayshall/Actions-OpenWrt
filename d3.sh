@@ -8,5 +8,5 @@ src-git kenzo https://github.com/kenzok8/openwrt-packages
 src-git small https://github.com/kenzok8/small
 src-git darkmatter https://github.com/apollo-ng/luci-theme-darkmatter
 src-git istore https://github.com/linkease/istore;main
-src-git dpackages https://github.com/DHDAXCW/packages
+#src-git dpackages https://github.com/DHDAXCW/packages
 src-git luci https://github.com/DHDAXCW/luci
