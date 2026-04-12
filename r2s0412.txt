@@ -1,0 +1,42 @@
+# --- 基础汉化 ---
+CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
+
+# --- 1. 基础拨号与系统管理 ---
+CONFIG_PACKAGE_pppd=y
+CONFIG_PACKAGE_ppp-mod-pppoe=y
+CONFIG_PACKAGE_uhttpd=y
+CONFIG_PACKAGE_luci-i18n-uhttpd-zh-cn=y
+
+# --- 2. 科学上网 (Passwall & SSR-Plus) ---
+# Passwall 及其汉化
+CONFIG_PACKAGE_luci-app-passwall=y
+CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus=y
+
+# SSR-Plus 及其汉化
+CONFIG_PACKAGE_luci-app-ssr-plus=y
+CONFIG_PACKAGE_luci-i18n-ssr-plus-zh-cn=y
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Xray=y
+
+# --- 3. 网络加速 (TurboACC) ---
+CONFIG_PACKAGE_luci-app-turboacc=y
+CONFIG_PACKAGE_luci-i18n-turboacc-zh-cn=y
+CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_OFFLOADING=y
+CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_BBR_CCA=y
+CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_DNSCACHE=y
+
+# --- 4. 系统工具 (vlmcsd) ---
+CONFIG_PACKAGE_luci-app-vlmcsd=y
+CONFIG_PACKAGE_luci-i18n-vlmcsd-zh-cn=y
+
+# --- 5. IPv6 模式支持 ---
+CONFIG_PACKAGE_ipv6helper=y
+CONFIG_PACKAGE_ip6tables=y
+CONFIG_PACKAGE_ip6tables-mod-nat=y
+
+# --- 6. 主题 (Darkmatter & Argon) ---
+CONFIG_PACKAGE_luci-theme-argon=y
+CONFIG_PACKAGE_luci-theme-material=y
+# 如果有 darkmatter，通常是 luci-theme-darkmatter
+CONFIG_PACKAGE_luci-theme-darkmatter=y
