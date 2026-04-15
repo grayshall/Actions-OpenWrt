@@ -26,7 +26,7 @@ on:
     types: started
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # 強制使用 Node 24 消除警告: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: r2s.txt
@@ -137,7 +137,7 @@ jobs:
       run: df -hT
 
     - name: Upload bin directory
-      uses: actions/upload-artifact@main
+      uses: actions/upload-artifac@v4
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
