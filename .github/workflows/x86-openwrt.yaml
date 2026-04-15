@@ -217,7 +217,7 @@ jobs:
         files: ${{ env.FIRMWARE }}/*
 
     - name: Delete workflow runs
-      uses: grayshall/delete-workflow-runs@v3
+      uses: Mattarks/delete-workflow-runs@v2.1
       with:
         retain_days: 1
         keep_minimum_runs: 3
