@@ -1,0 +1,127 @@
+# ======================== 基础系统与设备架构 ========================
+CONFIG_MODULES=y                                # 启用内核模块支持
+CONFIG_HAVE_DOT_CONFIG=y                        # 确认存在 .config 配置文件
+CONFIG_HOST_OS_LINUX=y                          # 编译主机操作系统为 Linux
+CONFIG_TARGET_rockchip=y                        # 目标主平台：Rockchip (瑞芯微)
+CONFIG_TARGET_rockchip_armv8=y                  # 目标子架构：ARMv8 (64位)
+CONFIG_TARGET_rockchip_armv8_DEVICE_friendlyarm_nanopi-r2s=y # 目标设备型号：友善之臂 NanoPi R2S
+CONFIG_TARGET_BOARD="rockchip"                  # 目标主板标识
+CONFIG_TARGET_SUBTARGET="armv8"                 # 目标子平台标识
+CONFIG_TARGET_PROFILE="DEVICE_friendlyarm_nanopi-r2s" # 目标设备配置文件名称
+CONFIG_TARGET_ARCH_PACKAGES="aarch64_generic"   # 软件包架构：aarch64
+CONFIG_LINUX_6_12=y                             # 使用 Linux 6.12 内核版本
+
+# ======================== 固件映像与文件系统 ========================
+CONFIG_TARGET_ROOTFS_EXT4FS=y                   # 编译 EXT4 格式的根文件系统
+CONFIG_TARGET_EXT4_BLOCKSIZE=4096               # EXT4 块大小设置
+CONFIG_TARGET_ROOTFS_SQUASHFS=y                 # 编译 SquashFS 格式的只读根文件系统 (支持恢复出厂设置)
+CONFIG_TARGET_SQUASHFS_BLOCK_SIZE=256           # SquashFS 块大小设置
+CONFIG_TARGET_KERNEL_PARTSIZE=16                # 内核分区大小分配 (16MB)
+CONFIG_TARGET_ROOTFS_PARTSIZE=496               # 根文件系统分区大小分配 (496MB)
+CONFIG_PACKAGE_kmod-fs-btrfs=y                  # 启用 Btrfs 文件系统支持
+CONFIG_PACKAGE_kmod-fs-exfat=y                  # 启用 exFAT 文件系统支持 (常用于U盘/SD卡)
+CONFIG_PACKAGE_kmod-fs-ext4=y                   # 启用 EXT4 文件系统支持
+CONFIG_PACKAGE_kmod-fs-ntfs3=y                  # 启用 NTFS3 高性能文件系统支持 (用于Windows磁盘)
+CONFIG_PACKAGE_kmod-fs-vfat=y                   # 启用 FAT/VFAT 文件系统支持
+
+# ======================== 网络支持与 IPv6 ========================
+CONFIG_IPV6=y                                   # 开启 IPv6 全局支持
+CONFIG_PACKAGE_ipv6helper=y                     # 集成 IPv6 助手脚本
+CONFIG_PACKAGE_dnsmasq-full=y                   # 使用完整版 Dnsmasq (支持高级DNS及DHCP功能)
+CONFIG_PACKAGE_dnsmasq_full_dhcp=y              # Dnsmasq 开启 DHCP 支持
+CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y            # Dnsmasq 开启 DHCPv6 支持
+CONFIG_PACKAGE_dnsmasq_full_ipset=y             # Dnsmasq 开启 IPset 支持 (常用于科学上网分流)
+CONFIG_PACKAGE_ip6tables=y                      # 开启 IPv6 防火墙支持
+CONFIG_PACKAGE_iptables-mod-tproxy=y            # 启用透明代理 (TProxy) 模块支持
+CONFIG_PACKAGE_kmod-macvlan=y                   # 启用 Macvlan 网络接口模块支持 (常用于多拨或容器网络)
+CONFIG_PACKAGE_kmod-ppp=y                       # 启用 PPP 基础模块
+CONFIG_PACKAGE_kmod-pppoe=y                     # 启用 PPPoE 宽带拨号支持
+CONFIG_PACKAGE_kmod-tun=y                       # 启用 TUN/TAP 虚拟网络设备模块 (VPN与代理必备)
+CONFIG_PACKAGE_kmod-usb-net-rtl8152=y           # 包含 RTL8152/8153 USB网卡驱动 (NanoPi R2S 双网口核心依赖)
+
+# ======================== 磁盘、RAID 与 存储 ========================
+CONFIG_PACKAGE_block-mount=y                    # 启用块设备挂载功能 (自动挂载磁盘)
+CONFIG_PACKAGE_kmod-md-mod=y                    # 启用 Linux 软 RAID 核心模块
+CONFIG_PACKAGE_kmod-md-raid0=y                  # 启用 RAID 0 支持
+CONFIG_PACKAGE_kmod-md-raid1=y                  # 启用 RAID 1 支持
+CONFIG_PACKAGE_kmod-md-raid10=y                 # 启用 RAID 10 支持
+CONFIG_PACKAGE_kmod-md-raid456=y                # 启用 RAID 4/5/6 支持
+CONFIG_PACKAGE_mdadm=y                          # 包含 mdadm 阵列管理工具
+CONFIG_PACKAGE_lsblk=y                          # 包含 lsblk 磁盘列出工具
+CONFIG_PACKAGE_parted=y                         # 包含 parted 高级磁盘分区工具
+CONFIG_PACKAGE_kmod-usb-storage=y               # 启用 USB 存储设备支持
+CONFIG_PACKAGE_kmod-usb-storage-extras=y        # 启用额外 USB 存储设备驱动
+CONFIG_PACKAGE_kmod-usb-storage-uas=y           # 启用 UAS (USB Attached SCSI) 高速传输协议支持
+
+# ======================== LuCI 应用 (Web 管理界面插件) ========================
+CONFIG_PACKAGE_luci=y                           # 包含 LuCI 基础界面
+CONFIG_PACKAGE_luci-base=y                      # 包含 LuCI 核心模块
+CONFIG_LUCI_LANG_zh-cn=y                        # 默认设置 LuCI 语言为简体中文
+CONFIG_LUCI_LANG_en=y                           # 附带英语语言包
+
+# ----------------- 代理与科学上网 -----------------
+CONFIG_PACKAGE_luci-app-openclash=y             # 编译 OpenClash 插件
+CONFIG_PACKAGE_luci-app-passwall=y              # 编译 Passwall 插件
+CONFIG_PACKAGE_luci-app-ssr-plus=y              # 编译 SSR-Plus 插件
+CONFIG_PACKAGE_xray-core=y                      # 包含 Xray 代理核心
+CONFIG_PACKAGE_chinadns-ng=y                    # 包含 ChinaDNS-NG 防污染解析工具
+CONFIG_PACKAGE_dns2socks=y                      # 包含 dns2socks 解析工具
+CONFIG_PACKAGE_mosdns=y                         # 包含 MosDNS 自定义 DNS 转发器
+
+# ----------------- 网络控制与加速 -----------------
+CONFIG_PACKAGE_luci-app-turboacc=y              # 启用 Turbo ACC 网络加速 (支持 BBR, 硬件加速等)
+CONFIG_PACKAGE_luci-app-adguardhome=y           # 编译 AdGuardHome 广告过滤与DNS服务器
+CONFIG_PACKAGE_luci-app-ddns=y                  # 启用 动态域名解析 (DDNS) 插件
+CONFIG_PACKAGE_luci-app-nlbwmon=y               # 启用 宽带流量监控 插件
+CONFIG_PACKAGE_luci-app-arpbind=y               # 启用 IP/MAC 绑定插件
+CONFIG_PACKAGE_luci-app-upnp=y                  # 启用 UPnP 自动端口映射插件
+CONFIG_PACKAGE_luci-app-accesscontrol=y         # 启用 访问控制 (时间/设备限制) 插件
+
+# ----------------- 存储、下载与共享 -----------------
+CONFIG_PACKAGE_luci-app-diskman=y               # 启用 磁盘管理向导 插件
+CONFIG_PACKAGE_luci-app-filetransfer=y          # 启用 网页文件传输 插件
+CONFIG_PACKAGE_luci-app-vsftpd=y                # 启用 FTP 服务器插件
+CONFIG_PACKAGE_luci-app-samba4=y                # 启用 Samba4 (SMB/CIFS) 网络共享服务
+CONFIG_PACKAGE_luci-app-qbittorrent_dynamic=y   # 启用 qBittorrent BT/PT 下载客户端
+CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-webui=y # 包含 Rclone 云盘同步挂载工具及 WebUI
+
+# ----------------- 系统维护与辅助 -----------------
+CONFIG_PACKAGE_luci-app-autoreboot=y            # 启用 定时重启 插件
+CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go=y # 包含 解锁网易云音乐灰色版权 (Go版本核心)
+CONFIG_PACKAGE_luci-app-vlmcsd=y                # 启用 KMS 激活服务器插件
+CONFIG_PACKAGE_luci-app-wol=y                   # 启用 网络唤醒 (WOL) 插件
+
+# ======================== 语言包 (App中文支持) ========================
+CONFIG_PACKAGE_luci-i18n-base-zh-cn=y           # LuCI 基础界面中文语言包
+CONFIG_PACKAGE_luci-i18n-accesscontrol-zh-cn=y  # 访问控制 中文语言包
+CONFIG_PACKAGE_luci-i18n-adguardhome-zh-cn=y    # AdGuardHome 中文语言包
+CONFIG_PACKAGE_luci-i18n-arpbind-zh-cn=y        # IP/MAC绑定 中文语言包
+CONFIG_PACKAGE_luci-i18n-autoreboot-zh-cn=y     # 定时重启 中文语言包
+CONFIG_PACKAGE_luci-i18n-ddns-zh-cn=y           # 动态域名(DDNS) 中文语言包
+CONFIG_PACKAGE_luci-i18n-diskman-zh-cn=y        # 磁盘管理向导 中文语言包
+CONFIG_PACKAGE_luci-i18n-filetransfer-zh-cn=y   # 文件传输 中文语言包
+CONFIG_PACKAGE_luci-i18n-firewall-zh-cn=y       # 防火墙 中文语言包
+CONFIG_PACKAGE_luci-i18n-nlbwmon-zh-cn=y        # 宽带流量监控 中文语言包
+CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y       # Passwall 中文语言包
+CONFIG_PACKAGE_luci-i18n-samba4-zh-cn=y         # Samba4 网络共享 中文语言包
+CONFIG_PACKAGE_luci-i18n-ssr-plus-zh-cn=y       # SSR-Plus 中文语言包
+CONFIG_PACKAGE_luci-i18n-turboacc-zh-cn=y       # TurboACC 网络加速 中文语言包
+CONFIG_PACKAGE_luci-i18n-uhttpd-zh-cn=y         # uHTTPd Web服务器 中文语言包
+CONFIG_PACKAGE_luci-i18n-upnp-zh-cn=y           # UPnP 中文语言包
+CONFIG_PACKAGE_luci-i18n-vlmcsd-zh-cn=y         # KMS 服务器 中文语言包
+CONFIG_PACKAGE_luci-i18n-vsftpd-zh-cn=y         # FTP 服务器 中文语言包
+CONFIG_PACKAGE_luci-i18n-wol-zh-cn=y            # 网络唤醒(WOL) 中文语言包
+
+# ======================== 主题 (UI 皮肤) ========================
+CONFIG_PACKAGE_luci-theme-bootstrap=y           # 编译 Bootstrap 经典主题
+CONFIG_PACKAGE_luci-theme-darkmatter=y          # 编译 Darkmatter 暗黑主题
+
+# ======================== 核心工具与其他依赖 ========================
+CONFIG_PACKAGE_curl=y                           # 包含 curl 网络请求工具
+CONFIG_PACKAGE_wget-ssl=y                       # 包含 wget 下载工具 (带SSL加密支持)
+CONFIG_PACKAGE_nano=y                           # 包含 nano 简易文本编辑器
+CONFIG_PACKAGE_htop=y                           # 包含 htop 高级进程与系统资源监控工具
+CONFIG_PACKAGE_coremark=y                       # 包含 Coremark CPU 跑分性能测试工具
+CONFIG_PACKAGE_zlib=y                           # 包含 Zlib 压缩库
+CONFIG_PACKAGE_jq=y                             # 包含 jq JSON处理命令行工具
+CONFIG_PACKAGE_ruby=y                           # 包含 Ruby 运行环境支持
