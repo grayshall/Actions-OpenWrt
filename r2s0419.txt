@@ -8,7 +8,7 @@ CONFIG_TARGET_BOARD="rockchip"                  # 目标主板标识
 CONFIG_TARGET_SUBTARGET="armv8"                 # 目标子平台标识
 
 # ======================== 固件映像与容量分配 ========================
-CONFIG_TARGET_ROOTFS_PARTSIZE=496              # 根文件系统分区大小分配约 1GB
+CONFIG_TARGET_ROOTFS_PARTSIZE=1008             # 根文件系统分区大小分配约 1GB
 CONFIG_TARGET_KERNEL_PARTSIZE=16                # 内核分区大小分配 16MB
 CONFIG_TARGET_ROOTFS_SQUASHFS=y                 # 编译 SquashFS 格式的只读根文件系统
 
