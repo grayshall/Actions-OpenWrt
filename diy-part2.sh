@@ -24,3 +24,11 @@
 #sed -i 's/KERNEL_TESTING_PATCHVER:= ./KERNEL_TESTING_PATCHVER:=6.6/g' openwrt/target/linux/rockchip/Makefile
 #sed -i 's/LINUX_VERSION-6.1 = ./LINUX_VERSION-6.1 = .89/g' openwrt/include/kernel/kernel-6.1
 #sed -i 's/LINUX_KERNEL_HASH-6.1. ./LINUX_KERNEL_HASH-6.1.89 = 12bab8e092618d1d4eeaf4201e6e70054c94896198956bd84ff0e908b0264719/g' openwrt/include/kernel/kernel-6.1
+
+# 强制修改默认的 ROOTFS 分区大小为 512MB
+sed -i 's/^[ \t]*CONFIG_TARGET_ROOTFS_PARTSIZE=.*/CONFIG_TARGET_ROOTFS_PARTSIZE=1008/g' .config
+
+# 如果文件中没有这一行，则在末尾追加，确保万无一失
+if ! grep -q "CONFIG_TARGET_ROOTFS_PARTSIZE=" .config; then
+  echo "CONFIG_TARGET_ROOTFS_PARTSIZE=1008" >> .config
+fi
