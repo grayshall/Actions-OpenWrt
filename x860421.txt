@@ -1,0 +1,114 @@
+# ======================== 基础系统与设备架构 ========================
+CONFIG_TARGET_x86=y                             # 目标主平台：x86
+CONFIG_TARGET_x86_64=y                          # 目标子架构：x86_64 (64位)
+CONFIG_TARGET_MULTI_PROFILE=y                   # 启用多设备配置文件支持 (现代源码必备)
+CONFIG_TARGET_x86_64_Generic=y                  # 目标设备：x86_64 通用设备
+CONFIG_TARGET_BOARD="x86"                       # 目标主板标识
+CONFIG_TARGET_SUBTARGET="64"                    # 目标子平台标识
+
+# ======================== 固件映像与容量分配 ========================
+CONFIG_TARGET_ROOTFS_PARTSIZE=1024              # 根文件系统分区大小分配 1024MB (1GB)
+CONFIG_TARGET_KERNEL_PARTSIZE=32                # 内核分区大小分配 32MB
+CONFIG_TARGET_ROOTFS_SQUASHFS=y                 # 编译 SquashFS 格式的只读根文件系统
+CONFIG_TARGET_ROOTFS_EXT4FS=y                   # 编译 EXT4 格式的可写根文件系统 (x86常用)
+
+# ======================== 全局 IPv6 网络支持 ========================
+CONFIG_IPV6=y                                   # 开启底层 IPv6 全局支持
+CONFIG_PACKAGE_ipv6helper=y                     # 集成 IPv6 助手脚本 (自动配置DHCPv6等)
+CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y            # Dnsmasq 开启 DHCPv6 支持
+CONFIG_PACKAGE_ip6tables=y                      # 开启 IPv6 防火墙支持
+CONFIG_PACKAGE_kmod-ipt-nat6=y                  # 启用 IPv6 NAT 模块
+CONFIG_PACKAGE_iptables-mod-tproxy=y            # 启用透明代理 (TProxy) 模块支持
+CONFIG_PACKAGE_kmod-macvlan=y                   # 启用 Macvlan 网络接口模块支持 (常用于多拨或容器网络)
+CONFIG_PACKAGE_kmod-ppp=y                       # 启用 PPP 基础模块
+CONFIG_PACKAGE_kmod-pppoe=y                     # 启用 PPPoE 宽带拨号支持
+CONFIG_PACKAGE_kmod-tun=y                       # 启用 TUN/TAP 虚拟网络设备模块 (VPN与代理必备)
+
+# ======================== 磁盘、RAID 与 存储 ========================
+CONFIG_PACKAGE_block-mount=y                    # 启用块设备挂载功能 (自动挂载磁盘)
+CONFIG_PACKAGE_kmod-md-mod=y                    # 启用 Linux 软 RAID 核心模块
+CONFIG_PACKAGE_kmod-md-raid0=y                  # 启用 RAID 0 支持
+CONFIG_PACKAGE_kmod-md-raid1=y                  # 启用 RAID 1 支持
+CONFIG_PACKAGE_kmod-md-raid10=y                 # 启用 RAID 10 支持
+CONFIG_PACKAGE_kmod-md-raid456=y                # 启用 RAID 4/5/6 支持
+CONFIG_PACKAGE_mdadm=y                          # 包含 mdadm 阵列管理工具
+CONFIG_PACKAGE_lsblk=y                          # 包含 lsblk 磁盘列出工具
+CONFIG_PACKAGE_parted=y                         # 包含 parted 高级磁盘分区工具
+CONFIG_PACKAGE_kmod-usb-storage=y               # 启用 USB 存储设备支持
+CONFIG_PACKAGE_kmod-usb-storage-extras=y        # 启用额外 USB 存储设备驱动
+CONFIG_PACKAGE_kmod-usb-storage-uas=y           # 启用 UAS (USB Attached SCSI) 高速传输协议支持
+
+# ======================== 科学上网：Passwall (全协议支持) ========================
+CONFIG_PACKAGE_luci-app-passwall=y              # 启用 Passwall 主程序
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray=y # 开启 Xray (Vless/Vmess等) 核心支持
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray_Plugin=y # 开启 Xray 插件支持
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_SingBox=y # 开启 Sing-Box 核心支持
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus=y # 开启 Trojan-Plus 协议支持
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_NaiveProxy=y # 开启 NaiveProxy 协议支持
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Hysteria=y # 开启 Hysteria 协议支持
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Client=y # 开启 SS 客户端
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Server=y # 开启 SS 服务端
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Rust_Client=y # 开启 SS-Rust 客户端
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Client=y # 开启 SSR 客户端
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Simple_Obfs=y # 开启 Simple-Obfs 混淆支持
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray_Geodata=y # 包含 V2ray 路由规则数据
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray_Plugin=y # 包含 V2ray 插件支持
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Haproxy=y # 包含 Haproxy 负载均衡支持
+CONFIG_PACKAGE_luci-app-passwall_Iptables_Transparent_Proxy=y # 开启 Iptables 透明代理
+
+# ======================== 科学上网：SSR-Plus (全协议支持) ========================
+CONFIG_PACKAGE_luci-app-ssr-plus=y              # 启用 SSR-Plus 主程序
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Xray=y # 开启 Xray 协议支持
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan=y # 开启 Trojan 协议支持
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_NaiveProxy=y # 开启 NaiveProxy 协议支持
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Hysteria=y # 开启 Hysteria 协议支持
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_IPT2Socks=y # 开启 IPT2Socks 代理支持
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Rust_Client=y # 开启 SS-Rust 客户端
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Rust_Server=y # 开启 SS-Rust 服务端
+
+# ======================== 科学上网：OpenClash ========================
+CONFIG_PACKAGE_luci-app-openclash=y             # 启用 OpenClash 科学上网客户端
+
+# ======================== LuCI 应用 (Web 管理界面插件) ========================
+CONFIG_PACKAGE_luci=y                           # 包含 LuCI 基础界面
+CONFIG_PACKAGE_luci-base=y                      # 包含 LuCI 核心模块
+
+# ======================== 指定扩展应用 ========================
+CONFIG_PACKAGE_luci-app-uhttpd=y                # 启用 uHTTPd Web 服务器管理面板
+CONFIG_PACKAGE_luci-app-turboacc=y              # 启用 Turbo ACC 网络加速组件 (支持BBR等)
+CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_DNSFORWARDER=y # TurboACC 开启 DNS 转发优化
+CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_DNSPROXY=y     # TurboACC 开启 DNS 代理优化
+CONFIG_PACKAGE_luci-app-vlmcsd=y                # 启用 VLMCSD (KMS 激活服务器)
+CONFIG_PACKAGE_luci-app-adguardhome=y           # 启用 AdGuardHome 广告过滤与DNS控制台
+CONFIG_PACKAGE_luci-app-diskman=y               # 启用 磁盘管理向导 插件
+CONFIG_PACKAGE_luci-app-diskman_INCLUDE_btrfs_progs=y # Diskman 包含 btrfs 工具
+CONFIG_PACKAGE_luci-app-diskman_INCLUDE_lsblk=y       # Diskman 包含 lsblk 工具
+CONFIG_PACKAGE_luci-app-diskman_INCLUDE_mdadm=y       # Diskman 包含磁盘阵列 mdadm 工具
+
+# ======================== 语言与地区：全面中文支持 ========================
+CONFIG_LUCI_LANG_zh-cn=y                        # 默认设置 LuCI 系统语言为简体中文
+CONFIG_PACKAGE_luci-i18n-base-zh-cn=y           # 基础界面 中文语言包
+CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y       # Passwall 中文语言包
+CONFIG_PACKAGE_luci-i18n-ssr-plus-zh-cn=y       # SSR-Plus 中文语言包
+CONFIG_PACKAGE_luci-i18n-uhttpd-zh-cn=y         # uHTTPd 面板 中文语言包
+CONFIG_PACKAGE_luci-i18n-turboacc-zh-cn=y       # Turbo ACC 中文语言包
+CONFIG_PACKAGE_luci-i18n-vlmcsd-zh-cn=y         # KMS 激活服务器 中文语言包
+CONFIG_PACKAGE_luci-i18n-adguardhome-zh-cn=y    # AdGuardHome 中文语言包
+CONFIG_PACKAGE_luci-i18n-diskman-zh-cn=y        # 磁盘管理向导 中文语言包
+
+# ======================== 主题 UI ========================
+CONFIG_PACKAGE_luci-theme-bootstrap=y           # 编译 Bootstrap 经典主题
+CONFIG_PACKAGE_luci-theme-argon=y               # 编译 Argon 主题 (现代化、稳定推荐)
+
+# ======================== x86 核心物理网卡驱动与其他 ========================
+CONFIG_PACKAGE_kmod-e1000e=y                    # 包含 Intel 千兆网卡驱动
+CONFIG_PACKAGE_kmod-igb=y                       # 包含 Intel 千兆多口网卡驱动 (如 i210/i211)
+CONFIG_PACKAGE_kmod-ixgbe=y                     # 包含 Intel 万兆网卡驱动
+CONFIG_PACKAGE_kmod-r8169=y                     # 包含 Realtek 瑞昱系列千兆网卡驱动
+CONFIG_PACKAGE_curl=y                           # 基础网络请求工具
+CONFIG_PACKAGE_wget-ssl=y                       # 加密下载工具
+CONFIG_PACKAGE_nano=y                           # 包含 nano 简易文本编辑器
+CONFIG_PACKAGE_htop=y                           # 包含 htop 高级进程与系统资源监控工具
+CONFIG_PACKAGE_coremark=y                       # 包含 Coremark CPU 跑分性能测试工具
+CONFIG_PACKAGE_zlib=y                           # 包含 Zlib 压缩库
+CONFIG_PACKAGE_jq=y                             # 包含 jq JSON处理命令行工具
