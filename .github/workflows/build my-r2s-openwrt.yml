@@ -22,8 +22,8 @@ on:
 #  schedule:
 #    - cron: 0 8 * * 5
 
-  watch:
-    types: started
+  #watch:
+    #types: started
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # 強制使用 Node 24 消除警告: https://github.com/coolsnowwolf/lede
