@@ -6,7 +6,8 @@ src-git telephony https://github.com/coolsnowwolf/telephony.git
 #src-git helloworld https://github.com/fw876/helloworld.git
 src-git kenzo https://github.com/kenzok8/openwrt-packages
 src-git small https://github.com/kenzok8/small
-src-git darkmatter https://github.com/apollo-ng/luci-theme-darkmatter
+#src-git darkmatter https://github.com/apollo-ng/luci-theme-darkmatter
+src-git darkmatter https://github.com/uparrows/luci-theme-darkmatter
 #src-git istore https://github.com/linkease/istore;main
 #src-git dpackages https://github.com/DHDAXCW/packages
 #src-git luci https://github.com/DHDAXCW/luci
