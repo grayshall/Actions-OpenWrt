@@ -199,7 +199,7 @@ jobs:
         files: ${{ env.FIRMWARE }}/*
 
     - name: Remove old Artifacts
-      uses: c-hive/gha-remove-artifacts@v1.2.0
+      uses: c-hive/gha-remove-artifacts@v1.4.0
       with:
         age: '1 day'
         skip-recent: 3
